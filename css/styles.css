@@ -1,0 +1,1560 @@
+/*==========================================================
+CLUB JUVENTUD CITY BELL
+Sistema de Diseño
+TP Final
+==========================================================*/
+
+
+/*==========================================================
+VARIABLES
+==========================================================*/
+
+:root{
+
+    /* Colores */
+
+    --color-primario:#56B6E8;
+    --color-primario-hover:#3EA7DD;
+
+    --color-secundario:#1F5F9B;
+    --color-secundario-hover:#184D80;
+
+    --color-acento:#9ED9F7;
+
+    --color-fondo:#FFFFFF;
+    --color-superficie:#F6FAFD;
+
+    --color-texto:#1F2937;
+    --color-texto-secundario:#6B7280;
+
+    --color-borde:#D8E7F2;
+
+    --color-footer:#123A66;
+
+    /* Tipografía */
+
+    --fuente-principal:'Montserrat',sans-serif;
+
+    --tipo-sm:.875rem;
+    --tipo-base:1rem;
+    --tipo-lg:1.5rem;
+    --tipo-xl:2rem;
+    --tipo-display:3.75rem;
+
+    /* Espaciados */
+
+    --espacio-xs:.5rem;
+    --espacio-sm:1rem;
+    --espacio-md:2rem;
+    --espacio-lg:4rem;
+    --espacio-xl:6rem;
+
+    /* Bordes */
+
+    --radio-sm:.5rem;
+    --radio-md:.75rem;
+    --radio-lg:1.5rem;
+
+    /* Sombras */
+
+    --sombra-card:
+        0 8px 24px rgba(0,0,0,.08);
+
+    --sombra-hover:
+        0 12px 36px rgba(0,0,0,.12);
+
+    /* Contenedor */
+
+    --contenedor-max:1360px;
+
+}
+
+
+/*==========================================================
+RESET
+==========================================================*/
+
+*,
+*::before,
+*::after{
+
+    margin:0;
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:var(--fuente-principal);
+
+    background:var(--color-fondo);
+
+    color:var(--color-texto);
+
+    line-height:1.6;
+
+}
+
+img{
+
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+}
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
+
+ul{
+
+    list-style:none;
+
+}
+
+button,
+/* ==========================================================
+   CAMPOS DEL FORMULARIO
+========================================================== */
+
+input,
+textarea{
+
+    width:100%;
+
+    padding:1rem 1.2rem;
+
+    font:inherit;
+
+    color:var(--color-texto);
+
+    background:#ffffff;
+
+    border:3px solid #5D8FB3;
+
+    border-radius:var(--radio-md);
+
+    transition:
+        border-color .25s,
+        box-shadow .25s,
+        background .25s;
+        
+
+}
+
+input::placeholder,
+textarea::placeholder{
+
+    color:#8B99A8;
+
+}
+
+input:hover,
+textarea:hover{
+
+    border-color:#3EA7DD;
+
+}
+
+input:focus,
+textarea:focus{
+
+    outline:none;
+
+    background:#FFFFFF;
+
+    border-color:#1F5F9B;
+
+    box-shadow:
+        0 0 0 5px rgba(31,95,155,.18);
+
+}
+
+textarea{
+
+    resize:vertical;
+
+    min-height:180px;
+
+}
+
+
+/*==========================================================
+UTILIDADES
+==========================================================*/
+
+.contenedor{
+
+    width:min(92%, var(--contenedor-max));
+
+    margin-inline:auto;
+
+}
+
+.seccion{
+
+    padding:
+
+        calc(var(--espacio-xl) + 2rem)
+        0;
+
+}
+
+.seccion-titulo{
+
+    text-align:center;
+
+    font-size:var(--tipo-xl);
+
+    color:var(--color-secundario);
+
+    margin-bottom:3rem;
+
+}
+
+.seccion-subtitulo{
+
+    max-width:720px;
+
+    margin-inline:auto;
+
+    margin-bottom:var(--espacio-lg);
+
+    text-align:center;
+
+    color:var(--color-texto-secundario);
+
+}
+
+
+/*==========================================================
+LAYOUT GENERAL
+==========================================================*/
+
+.layout{
+    display:grid;
+    grid-template-columns: 1fr;
+}
+
+.layout > section{
+    grid-column: 1 / -1;
+}
+
+/* ==========================================================
+   UTILIDADES
+========================================================== */
+
+
+
+.seccion{
+
+    padding:var(--espacio-xl) 0;
+
+}
+
+
+
+.hero,
+.club,
+.futbol,
+.noticias,
+.galeria,
+.participa,
+.contacto{
+
+    padding-block:5.5rem;
+
+}
+
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.header{
+
+    background:var(--color-secundario);
+
+    color:white;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+}
+
+.header__contenido{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:var(--espacio-md);
+
+    padding:var(--espacio-md) 0;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:var(--espacio-sm);
+
+}
+
+.logo img{
+
+    width:72px;
+
+    height:72px;
+
+    object-fit:cover;
+
+}
+
+.logo h1{
+
+    font-size:1.15rem;
+
+    font-weight:700;
+
+}
+
+.logo p{
+
+    font-size:var(--tipo-sm);
+
+    opacity:.85;
+
+}
+
+
+/* ==========================================================
+   NAVEGACIÓN
+========================================================== */
+
+.nav__lista{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:.75rem 1.5rem;
+
+    width:100%;
+
+}
+
+.nav a{
+    display:inline-block;
+    padding:.625rem .75rem;
+    font-weight:600;
+    transition:.25s;
+}
+
+.nav a:hover{
+
+    color:var(--color-acento);
+
+}
+
+
+/* ==========================================================
+   GRID GENERAL
+========================================================== */
+
+
+
+
+/* ==========================================================
+   HERO
+========================================================== */
+
+.hero{
+
+    background:linear-gradient(
+        180deg,
+        #F8FBFE 0%,
+            #EEF6FC 100%
+    );
+
+    padding-bottom:3rem;
+
+}
+
+.hero__contenido{
+
+    display:grid;
+
+    gap:var(--espacio-lg);
+
+    align-items:center;
+
+    padding:var(--espacio-xl) 0;
+
+}
+
+.hero__texto{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:var(--espacio-md);
+
+}
+
+.hero__eyebrow{
+
+    color:var(--color-secundario);
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+}
+
+.hero__titulo{
+
+    font-size:clamp(2.5rem,6vw,var(--tipo-display));
+
+    line-height:1.1;
+
+}
+
+.hero__descripcion{
+
+    color:var(--color-texto-secundario);
+
+    max-width:640px;
+
+}
+
+.hero__acciones{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:var(--espacio-sm);
+
+}
+
+.hero__imagen img{
+
+    border-radius:var(--radio-lg);
+
+    box-shadow:
+
+        0 25px 55px rgba(0,0,0,.20);
+
+    transition:
+
+        transform .35s,
+        box-shadow .35s;
+
+}
+
+.hero__imagen img:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:
+
+        0 35px 70px rgba(0,0,0,.25);
+
+}
+/* ==========================================================
+   BOTONES
+========================================================== */
+
+.btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:.9rem 1.8rem;
+
+    border-radius:var(--radio-md);
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.btn--primario{
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--color-primario),
+             var(--color-secundario)
+        );
+
+    color:white;
+    border:none;
+
+}
+
+.btn--primario:hover{
+
+    background:
+
+        linear-gradient(
+            135deg,
+           var(--color-primario-hover),
+        var(--color-secundario)
+        );
+
+}
+
+.btn--secundario{
+
+    border:2px solid var(--color-secundario);
+
+    color:var(--color-secundario);
+
+    background:white;
+
+}
+
+.btn--secundario:hover{
+
+    background:var(--color-secundario);
+
+    color:white;
+
+}
+
+
+/* ==========================================================
+   SOBRE EL CLUB
+========================================================== */
+
+.club{
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--color-secundario),
+            #2D74B3
+        );
+
+    color:white;
+
+}
+
+.club .seccion-titulo,
+.club .hero__eyebrow{
+
+    color:white;
+
+}
+
+.club p{
+
+    color:rgba(255,255,255,.92);
+
+}
+
+.club strong{
+
+    color:white;
+
+}
+
+.club__grid{
+
+    display:grid;
+
+    gap:var(--espacio-xl);
+
+}
+
+.club__texto{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:var(--espacio-md);
+
+}
+
+.club__imagen img{
+
+    border-radius:var(--radio-lg);
+
+    box-shadow:var(--sombra-card);
+
+}
+
+.club__texto p{
+
+    margin-bottom:1.4rem;
+
+}
+
+.tarjeta-categoria p,
+.tarjeta-participacion p,
+.tarjeta-noticia p{
+
+    line-height:1.8;
+
+}
+
+/* ==========================================================
+   TARJETAS
+========================================================== */
+
+.cards{
+
+    display:grid;
+
+    gap:calc(var(--espacio-md) + .75rem);
+
+}
+
+.tarjeta-categoria,
+.tarjeta-participacion,
+.tarjeta-noticia{
+
+    background:white;
+
+    border:none;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:
+
+        0 15px 35px rgba(0,0,0,.10);
+
+    transition:
+
+        transform .30s,
+        box-shadow .30s;
+
+}
+
+.tarjeta-categoria:hover,
+.tarjeta-participacion:hover,
+.tarjeta-noticia:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:
+
+        0 25px 60px rgba(0,0,0,.18);
+
+}
+
+.tarjeta-categoria,
+.tarjeta-participacion{
+
+    padding:var(--espacio-md);
+
+}
+
+.tarjeta-categoria h3,
+.tarjeta-participacion h3{
+
+    color:var(--color-secundario);
+
+    margin-bottom:var(--espacio-sm);
+
+}
+
+
+/* ==========================================================
+   PRÓXIMO PARTIDO
+========================================================== */
+
+.partido__equipo{
+    font-size:var(--tipo-lg);
+    font-weight:700;
+}
+
+
+.partido{
+
+    background:var(--color-secundario);
+
+    color:white;
+
+    padding:
+
+        3rem
+        0;
+
+}
+
+.partido__card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:1.25rem;
+
+    text-align:center;
+
+}
+
+.partido__versus{
+
+    font-size:var(--tipo-lg);
+
+    font-weight:700;
+
+}
+
+
+/* ==========================================================
+   NOTICIAS
+========================================================== */
+
+.grid-noticias{
+
+    display:grid;
+
+    gap:2rem;
+
+}
+
+.tarjeta-noticia{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.tarjeta-noticia img{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.tarjeta-noticia__contenido{
+
+    padding:var(--espacio-md);
+
+}
+
+.tarjeta-noticia__contenido h3{
+
+    margin-bottom:var(--espacio-sm);
+
+    color:var(--color-secundario);
+
+}
+
+.tarjeta-noticia__contenido p{
+
+    color:var(--color-texto-secundario);
+
+}
+
+
+/* ==========================================================
+   CONTAINER QUERY
+========================================================== */
+
+.tarjeta-noticia{
+
+    container-type:inline-size;
+
+}
+
+@container (min-width:360px){
+
+    .tarjeta-noticia{
+
+        display:grid;
+
+        grid-template-columns:220px 1fr;
+
+    }
+
+    .tarjeta-noticia img{
+
+        width:100%;
+
+        height:220px;
+
+        object-fit:cover;
+
+    }
+
+}
+
+
+/* ==========================================================
+   GALERÍA
+========================================================== */
+
+.galeria{
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--color-secundario),
+            #2D74B3
+        );
+
+}
+
+.galeria .seccion-titulo{
+
+    color:white;
+
+}
+
+.grid-galeria{
+
+    display:grid;
+
+    gap:2rem;
+
+}
+
+.grid-galeria img{
+
+    width:100%;
+
+    aspect-ratio:4/3;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    box-shadow:
+
+        0 15px 35px rgba(0,0,0,.18);
+
+    transition:
+
+        transform .35s,
+        box-shadow .35s;
+
+}
+
+.grid-galeria img:hover{
+
+    transform:scale(1.04);
+
+    box-shadow:
+
+        0 30px 60px rgba(0,0,0,.28);
+
+}
+/* ==========================================================
+   PARTICIPACIÓN
+========================================================== */
+
+.participa{
+
+    background:var(--color-fondo);
+
+}
+
+.participa .cards{
+
+    display:grid;
+
+    gap:2rem;
+
+}
+
+
+/* ==========================================================
+   CONTACTO
+========================================================== */
+
+.contacto{
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--color-secundario),
+            #2D74B3
+        );
+
+}
+
+.contacto__grid{
+
+    display:grid;
+
+    gap:3rem;
+
+    align-items:start;
+
+}
+
+.contacto__imagen{
+
+    margin-top:2rem;
+
+}
+
+.contacto__imagen img{
+
+    width:100%;
+
+    aspect-ratio:16/10;
+
+    object-fit:cover;
+
+    border:3px solid rgba(255,255,255,.25);
+
+    box-shadow:
+
+        0 18px 45px rgba(0,0,0,.20);
+
+}
+
+.contacto .seccion-titulo,
+.contacto h3,
+.contacto strong{
+
+    color:white;
+
+}
+
+.contacto p,
+.contacto li{
+
+    color:rgba(255,255,255,.92);
+
+}
+
+.formulario-contacto{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1.5rem;
+
+    background:white;
+
+    padding:3rem;
+
+    border-radius:var(--radio-lg);
+
+    box-shadow:
+
+        0 18px 45px rgba(0,0,0,.18);
+
+}
+
+.formulario-contacto label{
+
+    color:var(--color-secundario);
+
+    font-weight:700;
+
+}
+
+.formulario-contacto input,
+.formulario-contacto textarea{
+
+    width:100%;
+
+    padding:1rem;
+
+    border:1px solid var(--color-borde);
+
+    border-radius:var(--radio-sm);
+
+    background:white;
+
+}
+
+.formulario-contacto textarea{
+
+    min-height:180px;
+
+    resize:vertical;
+
+}
+
+.formulario-contacto input:focus,
+.formulario-contacto textarea:focus{
+
+    outline:none;
+
+    background:white;
+
+    border-color:var(--color-primario);
+
+    box-shadow:
+
+        0 0 0 4px rgba(86,182,232,.18);
+
+}
+
+input::placeholder,
+textarea::placeholder{
+
+    color:#8B99A8;
+
+}
+
+.formulario-contacto .btn{
+
+    width:100%;
+
+    margin-top:.5rem;
+
+}
+
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+.footer{
+
+    background:
+
+        linear-gradient(
+            180deg,
+            #0F3156,
+            #09223D
+        );
+
+    color:white;
+
+    text-align:center;
+
+    padding:5rem 0;
+
+}
+
+.footer__logo{
+
+    width:90px;
+
+    margin-inline:auto;
+
+    margin-bottom:var(--espacio-md);
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE TABLET
+========================================================== */
+
+@media (min-width:768px){
+    .header__contenido{
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:center;
+    }
+    .layout{
+        grid-template-columns: repeat(6,1fr);
+    }
+
+    .nav__lista{
+
+        flex-direction:row;
+
+        gap:2rem;
+
+    }
+
+    .hero__contenido{
+
+        grid-template-columns:1fr 1fr;
+
+    }
+
+    .club__grid{
+
+        grid-template-columns:1fr 1fr;
+
+        align-items:center;
+
+    }
+
+    .cards{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+    .grid-noticias{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .grid-galeria{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .hero__acciones{
+
+        flex-direction:row;
+
+    }
+
+    .contacto__grid{
+
+    grid-template-columns:
+
+        .9fr 1.1fr;
+
+    gap:4rem;
+
+}
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE DESKTOP
+========================================================== */
+
+@media (min-width:1200px){
+
+    .grid-noticias{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+    .grid-galeria{
+
+        grid-template-columns:repeat(4,1fr);
+
+    }
+
+    .layout{
+    grid-template-columns: repeat(12,1fr);
+}
+
+.hero__contenido{
+    grid-template-columns: repeat(12,1fr);
+}
+
+.hero__texto{
+    grid-column: 1 / 7;
+}
+
+.hero__imagen{
+    grid-column: 7 / 13;
+}
+
+}
+
+
+/* ==========================================================
+   ============================
+   SISTEMA.HTML
+   ============================
+========================================================== */
+
+.paleta{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+    gap:var(--espacio-md);
+
+    margin-top:var(--espacio-lg);
+
+}
+
+.color-card{
+
+    background:white;
+
+    border:1px solid var(--color-borde);
+
+    border-radius:var(--radio-md);
+
+    overflow:hidden;
+
+    box-shadow:var(--sombra-card);
+
+}
+
+.color-card__muestra{
+
+    height:90px;
+
+}
+
+.color-card__info{
+
+    padding:var(--espacio-sm);
+
+}
+
+.tipografia-demo{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:var(--espacio-md);
+
+}
+
+.espaciado-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+
+    gap:var(--espacio-md);
+
+}
+
+.espacio-card{
+
+    background:white;
+
+    border:1px solid var(--color-borde);
+
+    border-radius:var(--radio-md);
+
+    padding:var(--espacio-md);
+
+    text-align:center;
+
+}
+
+.espacio-demo{
+
+    background:var(--color-primario);
+
+    margin-inline:auto;
+
+    border-radius:4px;
+
+}
+
+
+/* ==========================================================
+   COMPONENTES DEL SISTEMA
+========================================================== */
+
+.componentes-grid{
+
+    display:grid;
+
+    gap:var(--espacio-lg);
+
+    margin-top:var(--espacio-lg);
+
+}
+
+.componente{
+
+    background:white;
+
+    border:1px solid var(--color-borde);
+
+    border-radius:var(--radio-md);
+
+    padding:var(--espacio-lg);
+
+    box-shadow:var(--sombra-card);
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:var(--espacio-sm);
+
+}
+
+.componente img{
+
+    max-width:100%;
+
+    height:auto;
+
+}
+
+.componente .tarjeta-noticia{
+
+    width:100%;
+
+}
+
+.codigo{
+
+    width:100%;
+
+    margin-top:auto;
+
+    padding:var(--espacio-sm);
+
+    background:var(--color-superficie);
+
+    border-radius:var(--radio-sm);
+
+    font-family:monospace;
+
+    font-size:.9rem;
+
+    overflow:auto;
+
+}
+
+.tabla-sistema{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:var(--espacio-lg);
+
+}
+
+.tabla-sistema th{
+
+    background:var(--color-secundario);
+
+    color:white;
+
+    padding:1rem;
+
+}
+
+.tabla-sistema td{
+
+    padding:1rem;
+
+    border:1px solid var(--color-borde);
+
+    vertical-align:top;
+
+}
+
+@media (min-width:768px){
+
+    .componentes-grid{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+}
+
+/* ==========================================================
+   ENLACE "LEER MÁS" (átomo)
+========================================================== */
+
+.enlace-leer-mas{
+    display:inline-flex;
+    align-items:center;
+    gap:.35rem;
+    margin-top:var(--espacio-xs);
+    border:none;
+    background:none;
+    padding:0;
+    font-family:inherit;
+    font-size:var(--tipo-sm);
+    font-weight:700;
+    color:var(--color-primario);
+    cursor:pointer;
+    transition:.25s;
+}
+
+.enlace-leer-mas:hover{
+    color:var(--color-secundario);
+}
+
+/* ==========================================================
+   MODAL DE NOTICIAS (organismo)
+========================================================== */
+
+.modal{
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:var(--espacio-md);
+    z-index:2000;
+}
+
+.modal--abierto{
+    display:flex;
+}
+
+.modal__fondo{
+    position:absolute;
+    inset:0;
+    background:color-mix(in srgb, var(--color-footer) 75%, transparent);
+    cursor:pointer;
+}
+
+.modal__ventana{
+    position:relative;
+    z-index:1;
+    background:var(--color-fondo);
+    border-radius:var(--radio-lg);
+    box-shadow:var(--sombra-hover);
+    max-width:640px;
+    width:100%;
+    max-height:85vh;
+    overflow-y:auto;
+    padding:var(--espacio-lg);
+    animation:modal-entrada .3s ease;
+}
+
+@keyframes modal-entrada{
+    from{ opacity:0; transform:translateY(16px); }
+    to{ opacity:1; transform:translateY(0); }
+}
+
+.modal__cerrar{
+    position:absolute;
+    top:var(--espacio-md);
+    right:var(--espacio-md);
+    width:36px;
+    height:36px;
+    border:none;
+    border-radius:50%;
+    background:var(--color-superficie);
+    color:var(--color-secundario);
+    font-size:1.5rem;
+    line-height:1;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.modal__cerrar:hover{
+    background:var(--color-acento);
+}
+
+.modal__imagen{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:var(--radio-md);
+    margin-bottom:var(--espacio-md);
+}
+
+.modal__titulo{
+    font-size:var(--tipo-xl);
+    color:var(--color-secundario);
+    margin-bottom:var(--espacio-sm);
+}
+
+.modal__texto{
+    color:var(--color-texto-secundario);
+    line-height:1.8;
+    margin-bottom:var(--espacio-md);
+}
+
+.modal__texto:last-of-type{
+    margin-bottom:0;
+}
+
+/* Premios de la rifa (molécula específica del modal de Rifa Solidaria) */
+
+.modal__premios{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:var(--espacio-sm);
+    margin-top:var(--espacio-md);
+}
+
+.modal__premio{
+    text-align:center;
+}
+
+.modal__premio img{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    border-radius:var(--radio-sm);
+    box-shadow:var(--sombra-card);
+    margin-bottom:var(--espacio-xs);
+    background:var(--color-superficie);
+}
+
+.modal__premio figcaption{
+    font-size:var(--tipo-sm);
+    color:var(--color-texto-secundario);
+    font-weight:600;
+}
+
+body.body--modal-abierto{
+    overflow:hidden;
+}
+
+@media (max-width:480px){
+    .modal__premios{
+        grid-template-columns:1fr;
+    }
+
+    .modal{
+        padding:var(--espacio-sm);
+    }
+
+    .modal__ventana{
+        padding:var(--espacio-md);
+    }
+
+    .modal__premios{
+        grid-template-columns:1fr;
+    }
+}
