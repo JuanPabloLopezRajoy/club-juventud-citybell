@@ -1061,7 +1061,7 @@ textarea::placeholder{
 
 }
 
-.formulario-contacto__estado{
+.formulario-contacto .formulario-contacto__estado{
     margin-top:.5rem;
     font-size:var(--tipo-sm);
     font-weight:600;
