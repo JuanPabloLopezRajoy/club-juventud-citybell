@@ -1053,6 +1053,22 @@ textarea::placeholder{
 
 }
 
+.formulario-contacto .btn{
+
+    width:100%;
+
+    margin-top:.5rem;
+
+}
+
+.formulario-contacto__estado{
+    margin-top:.5rem;
+    font-size:var(--tipo-sm);
+    font-weight:600;
+    color:var(--color-texto);
+    min-height:1.5rem;
+}
+
 
 /* ==========================================================
    FOOTER
